@@ -13,7 +13,8 @@
     <strong>Brewery:</strong>
 
     <%brewery = Brewery.find_by id: beer.brewery_id%>
-    <%= link_to brewery.name, brewery %>
+    
+    <%= (link_to brewery.name, brewery) if brewery != nil%>
   </p>
 
 </div>
