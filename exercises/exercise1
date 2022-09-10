@@ -1,0 +1,65 @@
+*  Environment: development
+  TRANSACTION (0.1ms)  begin transaction
+  Brewery Load (0.1ms)  SELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?  [["id", 7], ["LIMIT", irb(main):006:0> nanny = Beer.last
+  Beer Load (0.2ms)  SELECT "beers".* FROM "beers" ORDER BY "beers"."id" DESC LIMIT ?  [["LIMIT", 1]]
+=>
+#<Beer:0x00007f6783f6d0a0
+...
+irb(main):007:0> nanny
+=>
+#<Beer:0x00007f6783f6d0a0
+ id: 15,
+ style: "Low alcohol",
+ brewery_id: 7,
+ created_at: Sat, 10 Sep 2022 12:10:08.028741000 UTC +00:00,
+ updated_at: Sat, 10 Sep 2022 12:10:08.028741000 UTC +00:00>
+irb(main):008:0> nanny.ratings.create score: 1
+  TRANSACTION (0.0ms)  begin transaction
+  Rating Create (0.1ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 1], ["beer_id", 15], ["created_at", "2022-09-10 12:11:58.276637"], ["updated_at", "2022-09-10 12:11:58.276637"]]  TRANSACTION (4.8ms)  commit transaction
+=>
+#<Rating:0x00007f6783bc9ca0
+  Beer Load (0.2ms)  SELECT "beers".* FROM "beers" WHERE "beers"."name" = ? LIMIT ?  [["name", "Punk IPA"], ["LIMIT", 1]]
+=>
+#<Beer:0x00007f6783b5de60
+...
+irb(main):012:0> punk
+=>
+#<Beer:0x00007f6783b5de60
+ id: 14,
+ name: "Punk IPA",
+ brewery_id: 7,
+ created_at: Sat, 10 Sep 2022 12:09:38.121925000 UTC +00:00,
+ updated_at: Sat, 10 Sep 2022 12:09:38.121925000 UTC +00:00>
+irb(main):013:0> punk.ratings.create score: 5
+  TRANSACTION (0.0ms)  begin transaction
+  Rating Create (0.2ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 5], ["beer_id", 14], ["created_at", "2022-09-10 12:13:16.298080"], ["updated_at", "2022-09-10 12:13:16.298080"]]  TRANSACTION (8.4ms)  commit transaction
+=>
+#<Rating:0x00007f6783a30a38
+ id: 8,
+ score: 5,
+ beer_id: 14,
+ created_at: Sat, 10 Sep 2022 12:13:16.298080000 UTC +00:00,
+ updated_at: Sat, 10 Sep 2022 12:13:16.298080000 UTC +00:00>
+irb(main):014:0> punk.ratings.create score: 20
+  TRANSACTION (0.0ms)  begin transaction
+  Rating Create (0.2ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 20], ["beer_id", 14], ["created_at", "2022-09-10 12:13:18.394319"], ["updated_at", "2022-09-10 12:13:18.394319"]]
+  TRANSACTION (7.3ms)  commit transaction
+=>
+#<Rating:0x00007f6783911c60
+ id: 9,
+ score: 20,
+ beer_id: 14,
+ created_at: Sat, 10 Sep 2022 12:13:18.394319000 UTC +00:00,
+ updated_at: Sat, 10 Sep 2022 12:13:18.394319000 UTC +00:00>
+irb(main):015:0> punk.ratings.create score: 32
+  TRANSACTION (0.0ms)  begin transaction
+  Rating Create (0.2ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 32], ["beer_id", 14], ["created_at", "2022-09-10 12:13:21.226623"], ["updated_at", "2022-09-10 12:13:21.226623"]]
+  TRANSACTION (6.2ms)  commit transaction
+=>
+#<Rating:0x00007f6788105e40
+ id: 10,
+ score: 32,
+ beer_id: 14,
+ created_at: Sat, 10 Sep 2022 12:13:21.226623000 UTC +00:00,
+ updated_at: Sat, 10 Sep 2022 12:13:21.226623000 UTC +00:00>
+irb(main):016:0>
