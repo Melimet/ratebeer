@@ -1,0 +1,15 @@
+<div id="<%= dom_id rating %>">
+
+
+
+
+  <p>
+    
+    <% beer = Beer.find_by id: rating.beer_id%>
+    <%=beer.name + ", " + rating.score.to_s%>
+    <%#beer = beer.find_by id: rating.beer_id%>
+    
+   <%#(link_to beer.name, beer + " " + rating.score) if beer != nil%>
+  </p>
+
+</div>
