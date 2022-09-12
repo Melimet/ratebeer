@@ -14,5 +14,8 @@ class Beer < ApplicationRecord
         
     end
 
+    def to_s
+        "#{self.name}, #{Brewery.find_by id: self.brewery_id} "
+    end
     
 end
