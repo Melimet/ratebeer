@@ -11,22 +11,13 @@
     </div>
   <% end %>
 
+<%= form_for(@beer) do |form| %>
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
+    name: <%= form.text_field :name %>
+    style: <%= form.text_field :style%>
+    <%= form.select :brewery_id, options_from_collection_for_select(@breweries, :id, :to_s) %>
 
-  <div>
-    <%= form.label :style, style: "display: block" %>
-    <%= form.text_field :style %>
-  </div>
-
-  <div>
-    <%= form.label :brewery_id, style: "display: block" %>
-    <%= form.number_field :brewery_id %>
-  </div>
-
-  <div>
     <%= form.submit %>
+    <% end %>
   </div>
 <% end %>
