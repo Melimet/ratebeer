@@ -1,3 +1,3 @@
 # README
 
-https://beerlover.fly.dev/breweries
+https://beerlover.fly.dev/
