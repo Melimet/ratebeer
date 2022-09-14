@@ -1,5 +1,5 @@
 module RatingAverage
-    extend ActiveSupport::Concern
+  extend ActiveSupport::Concern
 
   def average_rating
     ratings.average(:score).to_f
