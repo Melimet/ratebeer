@@ -4,7 +4,14 @@
 <div>
   <%= "Has left "+ pluralize(@user.ratings.count, 'rating')  +" with an average rating of "+ @user.average_rating.to_s %>
 </div>
-
+<div>
+<strong>Clubs</strong>
+  <% @user.beer_clubs.each do |club| %>
+  <li>
+  <%= link_to club, club%>
+  <% end%>
+  </li>
+</div>
 <div>
 <strong>Ratings</strong>
   <% @user.ratings.each do |rate| %>
