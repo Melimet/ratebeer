@@ -1,7 +1,19 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @user %>
+<strong>Username: <%= @user.username%></strong>
+<div>
+  <%= "Has left "+ pluralize(@user.ratings.count, 'rating')  +" with an average rating of "+ @user.average_rating.to_s %>
+</div>
 
+<div>
+<strong>Ratings</strong>
+  <% @user.ratings.each do |rate| %>
+  <li>
+    <%= Beer.find_by id: rate.beer_id  %>
+    <%= button_to 'delete', rate, method: :delete, form: {data:  {'turbo-confirm': 'Are you sure?'} } %>
+  <% end %>
+  </li>
+</div>
 <div>
   <%= link_to "Edit this user", edit_user_path(@user) %> |
   <%= link_to "Back to users", users_path %>
