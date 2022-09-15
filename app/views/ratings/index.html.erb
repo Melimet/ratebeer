@@ -7,7 +7,7 @@
   <% @ratings.each do |rating| %>
     <li> <%= render rating %> 
     Made by: 
-    <%= link_to current_user.username, current_user %> 
+    <%= link_to rating.user.username, rating.user %> 
     </li>
   <% end %>
 </ul>
