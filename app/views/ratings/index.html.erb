@@ -4,8 +4,6 @@
 
 <div id="ratings">
   
-  <% r = Rating.all %>
-  <% r.destroy_all%>
 <ul>
   <% @ratings.each do |rating| %>
     <li> <%= render rating %> 
