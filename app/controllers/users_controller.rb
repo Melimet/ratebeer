@@ -49,7 +49,11 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    if user == current_user
+    if @user == current_user
+      @user.ratings.destroy
+      memberships_to_be_deleted = Membership.where user_id:@user.id
+      memberships_to_be_deleted.destroy_all
+      session[:user_id] = nil
       @user.destroy
 
       respond_to do |format|
@@ -67,6 +71,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:username)
+      params.require(:user).permit(:username, :password, :password_confirmation)
     end
 end
