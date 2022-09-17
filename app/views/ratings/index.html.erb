@@ -3,8 +3,9 @@
 <%= link_to "Create new rating", new_rating_path %>
 
 <div id="ratings">
-  <% u = User.first %>
-  <% Rating.all.each{ |r| u.ratings << r } %>
+  
+  <% r = Rating.all %>
+  <% r.destroy_all%>
 <ul>
   <% @ratings.each do |rating| %>
     <li> <%= render rating %> 
