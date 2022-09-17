@@ -17,13 +17,16 @@
   <% @user.ratings.each do |rate| %>
   <li>
     <%= Beer.find_by id: rate.beer_id  %>
-    <%= button_to 'delete', rate, method: :delete, form: {data:  {'turbo-confirm': 'Are you sure?'} } %>
+    <% if @user == current_user %>
+        <%= link_to "Delete", rate, data: {turbo_method: :delete} %>
+    <% end%>
   <% end %>
   </li>
 </div>
 <div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
-
+  <%= link_to "Back to users", users_path %> |
+  <% if @user == current_user%>
+    <%= link_to "Edit this user", edit_user_path(@user) %> 
   <%= button_to "Destroy this user", @user, method: :delete %>
+  <% end%>
 </div>
