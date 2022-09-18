@@ -14,6 +14,11 @@ class User < ApplicationRecord
 
   has_many :ratings
 
+  def favorite_beer
+    return nil if ratings.empty?
+    ratings.sort_by(&:score).last.beer
+  end
+
   def to_s
     username.to_s
   end
