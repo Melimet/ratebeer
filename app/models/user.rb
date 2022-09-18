@@ -1,18 +1,18 @@
 class User < ApplicationRecord
-    include RatingAverage
-    has_secure_password
-    has_many :ratings
-    has_many :beers, through: :ratings
-    has_many :memberships
-    has_many :beer_clubs, through: :memberships
+  include RatingAverage
+  has_secure_password
+  has_many :ratings
+  has_many :beers, through: :ratings
+  has_many :memberships
+  has_many :beer_clubs, through: :memberships
 
-    validates :username, uniqueness: true,
-                        length: { minimum: 3, maximum: 30}
+  validates :username, uniqueness: true,
+                       length: { minimum: 3, maximum: 30 }
 
-    validates :password, length: { minimum: 4}
-    has_many :ratings
+  validates :password, length: { minimum: 4 }
+  has_many :ratings
 
-    def to_s
-        "#{self.username}"
-    end
+  def to_s
+    username.to_s
+  end
 end

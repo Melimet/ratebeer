@@ -4,7 +4,7 @@ class Beer < ApplicationRecord
   has_many :ratings, dependent: :destroy
   has_many :raters, through: :ratings, source: :user
 
-  validates :name, length: { minimum: 1}
+  validates :name, length: { minimum: 1 }
 
   def average
     return 0 if ratings.empty?

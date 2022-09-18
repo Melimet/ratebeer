@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[show edit update destroy]
 
   # GET /users or /users.json
   def index
@@ -49,28 +49,29 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    if @user == current_user
-      @user.ratings.destroy
-      memberships_to_be_deleted = Membership.where user_id:@user.id
-      memberships_to_be_deleted.destroy_all
-      session[:user_id] = nil
-      @user.destroy
+    return unless @user == current_user
 
-      respond_to do |format|
-        format.html { redirect_to users_url, notice: "User was successfully destroyed." }
-        format.json { head :no_content }
-      end
+    @user.ratings.destroy
+    memberships_to_be_deleted = Membership.where user_id: @user.id
+    memberships_to_be_deleted.destroy_all
+    session[:user_id] = nil
+    @user.destroy
+
+    respond_to do |format|
+      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+      format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:username, :password, :password_confirmation)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.require(:user).permit(:username, :password, :password_confirmation)
+  end
 end

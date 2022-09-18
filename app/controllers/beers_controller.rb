@@ -38,6 +38,7 @@ class BeersController < ApplicationController
       end
     end
   end
+
   # PATCH/PUT /beers/1 or /beers/1.json
   def update
     respond_to do |format|
