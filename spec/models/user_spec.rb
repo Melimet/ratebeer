@@ -64,6 +64,9 @@ RSpec.describe User, type: :model do
   end
 end # describe User
 
+describe "favorite style" do
+
+end
 def create_beer_with_rating(object, score)
   beer = FactoryBot.create(:beer)
   FactoryBot.create(:rating, beer: beer, score: score, user: object[:user] )

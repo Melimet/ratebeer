@@ -21,7 +21,31 @@ class User < ApplicationRecord
   end
 
   def favorite_style
-    ##Tee hashmap ja +1 aina ku tulee osuma
+
+    return nil if beers.empty?
+
+    style_ratings = Hash.new { |hash, key| hash[key] = [] }
+
+    ratings.map { | rating | 
+      beer = Beer.find_by id: rating.beer_id
+      style_ratings[beer.style] << rating.score }
+    
+    style_ratings.max_by { | style, list | list.sum / list.length }[0]
+  end
+
+  def favorite_brewery
+
+    return nil if beers.empty?
+
+    breweries_by_ratings = Hash.new { |hash, key| hash[key] = [] }
+
+    ratings.map { | rating | 
+      beer = Beer.find_by id: rating.beer_id
+      style_ratings[beer.style].push(rating.score) }
+    
+    style_ratings.max_by { | style, list | list.sum / list.length }[0]
+
+
   end
 
   def to_s
