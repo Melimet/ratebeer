@@ -62,11 +62,36 @@ RSpec.describe User, type: :model do
       expect(user.favorite_beer).to eq(best)
     end
   end
-end # describe User
+ # describe User
 
-describe "favorite style" do
+  describe "favorite brewery/style" do
+    let(:user){ FactoryBot.create(:user) }
 
+    it "no favourite brewery if no ratings have been made" do
+      expect(user.favorite_brewery).to eq(nil)
+    end
+
+    it "no favourite style if no ratings have been made" do
+      expect(user.favorite_style).to eq(nil)
+    end
+
+    it "is the correct style if there are multiple styles" do
+      create_beers_with_many_ratings({user: user}, 1,2,3,4,5,6,7)
+      best = create_beer_with_rating({ user: user}, 50)
+
+      expect(user.favorite_style).to eq(best.style)
+    end
+    it "is the correct brewery if there are multiple breweries" do
+
+      create_beers_with_many_ratings({user: user}, 1,2,3,4,5,6,7)
+      best = create_beer_with_rating({ user: user}, 50)
+      best_brewery = Brewery.find_by id:best.brewery_id
+      expect(user.favorite_brewery).to eq(best_brewery.name)
+    end
+  end
 end
+
+
 def create_beer_with_rating(object, score)
   beer = FactoryBot.create(:beer)
   FactoryBot.create(:rating, beer: beer, score: score, user: object[:user] )

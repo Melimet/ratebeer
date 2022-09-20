@@ -23,6 +23,14 @@
   <% end %>
   </li>
 </div>
+
+<div>
+<%= "Favourite style: "+ @user.favorite_style unless @user.favorite_style == nil %>
+</div>
+
+<div>
+<%= "Favourite brewery: "+ @user.favorite_brewery unless @user.favorite_brewery == nil %>
+</div>
 <div>
   <%= link_to "Back to users", users_path %> |
   <% if @user == current_user%>

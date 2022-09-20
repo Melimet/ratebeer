@@ -41,9 +41,10 @@ class User < ApplicationRecord
 
     ratings.map { | rating | 
       beer = Beer.find_by id: rating.beer_id
-      style_ratings[beer.style].push(rating.score) }
+      brewery = Brewery.find_by id: beer.brewery_id
+      breweries_by_ratings[brewery.name].push(rating.score) }
     
-    style_ratings.max_by { | style, list | list.sum / list.length }[0]
+    breweries_by_ratings.max_by { | style, list | list.sum / list.length }[0]
 
 
   end
