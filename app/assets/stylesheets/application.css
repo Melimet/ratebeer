@@ -45,6 +45,10 @@
     margin: 5px;
   }
 
+  .text{
+    font-family:monospace;
+  }
+
   .emoji:hover{
     display: inline-block;
     animation: spin 1s infinite linear;
