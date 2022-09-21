@@ -15,5 +15,49 @@
  */
  .navibar {
     padding: 10px;
-    background: #EFEFEF;
+    background: hotpink;
+    font-family: 'Trebuchet MS';
+  }
+
+  body {
+    background: silver;
+  }
+
+  .title {
+    font-family: monospace;
+  }
+
+  .flex-container{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .flex-container > div{
+    margin: 5px;
+    padding: 10px;
+  }
+
+  .unit {
+    font-family: monospace;
+    background-color: goldenrod;
+    width: fit-content;
+    padding: 5px;
+    margin: 5px;
+  }
+
+  .emoji:hover{
+    display: inline-block;
+    animation: spin 1s infinite linear;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes twist-up {
+    to {
+      transform: rotateX(360deg);
+    }
   }

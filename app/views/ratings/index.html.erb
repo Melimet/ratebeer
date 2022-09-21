@@ -1,16 +1,14 @@
 <p style="color: green"><%= notice %></p>
-<h2>List of ratings</h2>
+<h1 class="title">Ratings</h1>
 <%= link_to "Create new rating", new_rating_path %>
 
-<div id="ratings">
+<div class="flex-container">
   
-<ul>
   <% @ratings.each do |rating| %>
-    <li> <%= render rating %> 
+  <div class= "unit">
+    <%= render rating %> 
     Made by: 
     <%= link_to rating.user.username, rating.user %> 
-    </li>
+    </div>
   <% end %>
-</ul>
- 
 </div>

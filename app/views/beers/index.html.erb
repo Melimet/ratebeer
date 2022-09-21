@@ -1,11 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Beers</h1>
+<h1 class="title">Beers<span class="emoji">🍺</span></h1>
 
-<div id="beers">
+<%= link_to "New beer", new_beer_path %>
+
+<div class="flex-container">
   <% @beers.each do |beer| %>
-    <%= render beer %>
+    <div class="unit">
+      <%= render beer %>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New beer", new_beer_path %>
