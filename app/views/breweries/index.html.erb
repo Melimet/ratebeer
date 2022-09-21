@@ -2,8 +2,8 @@
 
 <h1 class="title">Breweries<span class="emoji">🌾</span></h1>
 
-<%= link_to "New brewery", new_brewery_path %>
-<p>Number of breweries: <%= @breweries.count %></p>
+<p class="text"><%= link_to "New brewery", new_brewery_path %> <br>
+Number of breweries: <%= @breweries.count %></p>
 
 <div class="flex-container">
   <% @breweries.each do |brewery| %>
