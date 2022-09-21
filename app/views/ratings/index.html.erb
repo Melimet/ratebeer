@@ -2,7 +2,7 @@
 <h1 class="title">Ratings</h1>
 
 <div class="text">
-  <%= link_to "Create new rating", new_rating_path %>
+  <%= link_to "Create new rating", new_rating_path if current_user %>
   <br>
   <%= "Total ratings: " + @ratings.count.to_s %>
 </div>

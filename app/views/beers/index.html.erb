@@ -2,7 +2,9 @@
 
 <h1 class="title">Beers<span class="emoji">🍺</span></h1>
 
-<p class="text"><%= link_to "New beer", new_beer_path %></p>
+<p class="text">
+<%= link_to("New beer", new_beer_path) if current_user %></p>
+
 
 <div class="flex-container">
   <% @beers.each do |beer| %>
