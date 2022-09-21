@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   has_many :ratings, dependent: :destroy
   has_many :beers, through: :ratings
-  
+
   has_many :memberships
   has_many :beer_clubs, through: :memberships
 
@@ -13,40 +13,39 @@ class User < ApplicationRecord
                        length: { minimum: 3, maximum: 30 }
 
   validates :password, length: { minimum: 4 },
-    format: { with: /\A[A-Z].*\d|\d.*[A-Z]\z/, message: "Password must contain atleast 1 upper case letter and a numeral" }
+                       format: { with: /\A[A-Z].*\d|\d.*[A-Z]\z/, message: "Password must contain atleast 1 upper case letter and a numeral" }
 
   def favorite_beer
     return nil if ratings.empty?
-    ratings.sort_by(&:score).last.beer
+
+    ratings.max_by(&:score).beer
   end
 
   def favorite_style
-
     return nil if beers.empty?
 
     style_ratings = Hash.new { |hash, key| hash[key] = [] }
 
-    ratings.map { | rating | 
+    ratings.map { |rating|
       beer = Beer.find_by id: rating.beer_id
-      style_ratings[beer.style] << rating.score }
-    
-    style_ratings.max_by { | style, list | list.sum / list.length }[0]
+      style_ratings[beer.style] << rating.score
+    }
+
+    style_ratings.max_by { |_style, list| list.sum / list.length }[0]
   end
 
   def favorite_brewery
-
     return nil if beers.empty?
 
     breweries_by_ratings = Hash.new { |hash, key| hash[key] = [] }
 
-    ratings.map { | rating | 
+    ratings.map { |rating|
       beer = Beer.find_by id: rating.beer_id
       brewery = Brewery.find_by id: beer.brewery_id
-      breweries_by_ratings[brewery.name].push(rating.score) }
-    
-    breweries_by_ratings.max_by { | style, list | list.sum / list.length }[0]
+      breweries_by_ratings[brewery.name].push(rating.score)
+    }
 
-
+    breweries_by_ratings.max_by { |_style, list| list.sum / list.length }[0]
   end
 
   def to_s

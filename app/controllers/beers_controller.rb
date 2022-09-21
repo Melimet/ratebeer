@@ -15,6 +15,7 @@ class BeersController < ApplicationController
     @breweries = Brewery.all
     @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter", "Lowalcohol"]
   end
+
   # GET /beers/new
   def new
     @beer = Beer.new
