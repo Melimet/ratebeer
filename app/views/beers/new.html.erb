@@ -1,9 +1,10 @@
-<h1>New beer</h1>
+<h1 class="title">New beer</h1>
 
+<div class="unit">
 <%= render "form", beer: @beer %>
-
+</div>
 <br>
 
-<div>
+<div class="text">
   <%= link_to "Back to beers", beers_path %>
 </div>

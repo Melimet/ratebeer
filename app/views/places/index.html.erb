@@ -2,7 +2,7 @@
 
 <p id="notice"><%= notice %></p>
 
-<div class="text">
+<div class="unit">
     <%= form_with url: places_path, method: :post do |form| %>
     city <%= form.text_field :city %>
     <%= form.submit "Search" %>

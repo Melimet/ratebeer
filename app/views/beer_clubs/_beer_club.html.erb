@@ -1,4 +1,4 @@
-<div id="<%= dom_id beer_club %>">
+<div class="unit">
   <p>
     <strong>Name:</strong>
     <%= beer_club.name %>
@@ -13,10 +13,9 @@
     <strong>City:</strong>
     <%= beer_club.city %>
   </p>
-  Members:
-  <li>
+  Members:<br>
   <% beer_club.users.each do  |user| %>
-    <%= link_to user, user %>
-  </li>
+     <%= link_to user, user %> <br>
+  
   <% end %>
 </div>

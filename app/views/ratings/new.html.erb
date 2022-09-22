@@ -1,4 +1,4 @@
-<h2>Create new rating</h2>
+<h2 class="title">Create new rating</h2>
 
 <%= form_for(@rating) do |f| %>
   <% if @rating.errors.any? %>
@@ -12,9 +12,10 @@
       </ul>
     </div>
   <% end %>
-
+<div class="unit">
   <%= f.select :beer_id, options_from_collection_for_select(@beers, :id, :to_s) %>
   score: <%= f.number_field :score %>
   <%= f.submit %>
 
 <% end %>
+</div>
