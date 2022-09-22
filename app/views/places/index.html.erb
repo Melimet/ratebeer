@@ -1,0 +1,23 @@
+<h1 class="title">Bar search<span class="emoji">📍</span></h1>
+
+<p id="notice"><%= notice %></p>
+
+<div class="text">
+    <%= form_with url: places_path, method: :post do |form| %>
+    city <%= form.text_field :city %>
+    <%= form.submit "Search" %>
+    <% end %>
+</div>
+
+<% if @places %>
+    <div class="flex-container">
+        <% @places.each do |place| %>
+        <div class="unit">
+            <% Place.rendered_fields.each do |field| %>
+                <%= "#{field}: #{place.send(field)}" %>
+                <br>
+            <% end %>
+        </div>
+    <% end %>
+    </div>
+<% end %>
