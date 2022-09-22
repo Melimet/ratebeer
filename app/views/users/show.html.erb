@@ -35,7 +35,7 @@
   <%= link_to "Back to users", users_path %> |
   <% if @user == current_user%>
     <%= link_to "Edit this user", edit_user_path(@user) %> 
-  <%= button_to "Destroy this user", @user, method: :delete %>
+  <%= button_to "Destroy user", @user, method: :delete %>
   <% end%>
 </div>
 </div>

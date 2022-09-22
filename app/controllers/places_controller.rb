@@ -6,10 +6,10 @@ class PlacesController < ApplicationController
     places = Rails.cache.fetch(session[:last_search])
 
     places.each do |place|
-        if place.send("id") == params[:id]
-            @place = place
-            return
-        end
+      if place.send("id") == params[:id]
+        @place = place
+        return @place
+      end
     end
     redirect_to places_path, notice: "No such bar!"
   end
@@ -26,7 +26,6 @@ class PlacesController < ApplicationController
   end
 
   def to_s
-
     @place
   end
 end
