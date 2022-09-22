@@ -14,7 +14,11 @@
         <% @places.each do |place| %>
         <div class="unit">
             <% Place.rendered_fields.each do |field| %>
-                <%= "#{field}: #{place.send(field)}" %>
+                <% if field.to_s == "name" %>
+                   name: <%= link_to place.send(field), place_path(place.id) %>
+                <% else %>
+                    <%= "#{field}: #{place.send(field)}" %>
+                <% end %>
                 <br>
             <% end %>
         </div>
