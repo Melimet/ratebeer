@@ -17,6 +17,7 @@
     <%= link_to 'Ratings', ratings_path %>
     <%= link_to 'Beer Clubs', beer_clubs_path %>
     <%= link_to 'Bar search', places_path %>
+
    ///// 
   
     <% if current_user %>
@@ -26,7 +27,9 @@
       data: {
       "turbo-method": :delete
       }, class: "link-secondary smooth" %>     
+
       //////
+
       <%= link_to "Join a beer club!", new_membership_path %>
       <%= link_to "Rate a beer!", new_rating_path%>
     <% else %>
