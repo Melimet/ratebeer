@@ -1,5 +1,30 @@
  .navibar {
-    padding: 10px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
     background: hotpink;
     font-family: 'Trebuchet MS';
+    overflow: hidden;
+  }
+
+  .navlink{
+    float: left;
+    /**border-right: 1px solid #bbb;*/
+  }
+
+  .navlink a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  .navlink a:hover{
+    background-color: #e06cbc;
+  }
+
+
+  .navlink:last-child{
+    border-right: none;
   }
