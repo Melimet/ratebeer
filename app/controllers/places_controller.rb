@@ -15,7 +15,10 @@ class PlacesController < ApplicationController
   end
 
   def search
+    return if params[:city].empty? 
+     
     city = params[:city].downcase
+
     @places = BeermappingApi.places_in(city)
     if @places.empty?
       redirect_to places_path, notice: "No locations in #{params[:city]}"
