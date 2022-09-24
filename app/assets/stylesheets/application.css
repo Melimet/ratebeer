@@ -45,3 +45,8 @@
     font-family:monospace;
   }
 
+  .note{
+    font-family: monospace;
+    padding: 0px;
+    background-color: teal; 
+  }
