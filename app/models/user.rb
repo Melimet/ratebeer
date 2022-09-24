@@ -28,10 +28,12 @@ class User < ApplicationRecord
 
     ratings.map { |rating|
       beer = Beer.find_by id: rating.beer_id
-      style_ratings[beer.style] << rating.score
+      style_ratings[beer.style_id] << rating.score
     }
 
-    style_ratings.max_by { |_style, list| list.sum / list.length }[0]
+    favourite_style_id = style_ratings.max_by { |_style, list| list.sum / list.length }[0]
+    style = Style.find_by id: favourite_style_id
+    style.to_s
   end
 
   def favorite_brewery

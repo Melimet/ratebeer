@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<h1 class="title">Styles<span class="emoji">🧐</span></h1>
+
+<p class="text"><%= link_to "New style", new_style_path %></p>
+
+<% @styles.each do |style| %>
+  <div class="unit">
+    <%= link_to style, style %>
+    <% beers = style.beers %>
+    <br>
+    <%= "Amount of beers #{beers.count}" %>
+  
+  </div>  
+<% end %>
+
+

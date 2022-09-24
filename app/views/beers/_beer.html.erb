@@ -6,7 +6,8 @@
 
   <p>
     <strong>Style:</strong>
-    <%= beer.style %>
+    <% style = Style.find_by id: beer.style_id %>
+    <%= link_to style.name, style %>
   </p>
 
   <p>
