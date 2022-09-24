@@ -3,8 +3,9 @@ include Helpers
 
 describe "Rating" do
   let!(:brewery) { FactoryBot.create :brewery, name: "Koff" }
-  let!(:beer1) { FactoryBot.create :beer, name: "iso 3", brewery:brewery }
-  let!(:beer2) { FactoryBot.create :beer, name: "Karhu", brewery:brewery }
+  let!(:style) { FactoryBot.create :style}
+  let!(:beer1) { FactoryBot.create :beer, name: "iso 3", brewery:brewery, style_id:style.id }
+  let!(:beer2) { FactoryBot.create :beer, name: "Karhu", brewery:brewery, style_id:style.id }
   let!(:user) { FactoryBot.create :user }
 
   before :each do
@@ -24,14 +25,15 @@ describe "Rating" do
     expect(beer1.ratings.count).to eq(1)
     expect(beer1.average_rating).to eq(15.0)
   end
-  it "all given ratings show up" do
+
+  it "all given show up" do
     create_beers_with_many_ratings({user: user}, 5 , 5, 5)
     visit ratings_path
 
     expect(page).to have_content "Total ratings: #{Rating.count}"
   end
 
-  it "correct ratings show up on user's page" do
+  it "correct ones show up on user's page" do
 
     create_beers_with_many_ratings({user: user}, 5 , 5, 5, 5)
     user2 = FactoryBot.create :user, username: "Seppo"

@@ -30,7 +30,7 @@ RSpec.describe User, type: :model do
       expect(User.count).to eq(1)
     end
 
-    it "and with two ratings, has the correct average rating" do
+    it "and two ratings, has the correct average rating" do
       FactoryBot.create(:rating, score: 10, user: user)
       FactoryBot.create(:rating, score: 20, user: user)
 
@@ -40,6 +40,7 @@ RSpec.describe User, type: :model do
   end
 
   describe "favorite beer" do
+    
     let(:user){ FactoryBot.create(:user) }
 
     it "has method for determining the favorite beer" do
@@ -68,6 +69,7 @@ RSpec.describe User, type: :model do
 
   describe "favorite brewery/style" do
     let(:user){ FactoryBot.create(:user) }
+    ##let(:user){ FactoryBot.create(:style) }
 
     it "no favourite brewery if no ratings have been made" do
       expect(user.favorite_brewery).to eq(nil)
@@ -80,14 +82,14 @@ RSpec.describe User, type: :model do
     it "is the correct style if there are multiple styles" do
       create_beers_with_many_ratings({user: user}, 1,2,3,4,5,6,7)
       best = create_beer_with_rating({ user: user}, 50)
-
-      expect(user.favorite_style).to eq(best.style)
+      best_style = Style.find_by id: best.style_id
+      expect(user.favorite_style).to eq("Lager")
     end
     it "is the correct brewery if there are multiple breweries" do
 
       create_beers_with_many_ratings({user: user}, 1,2,3,4,5,6,7)
       best = create_beer_with_rating({ user: user}, 50)
-      best_brewery = Brewery.find_by id:best.brewery_id
+      best_brewery = Brewery.find_by id: best.brewery_id
       expect(user.favorite_brewery).to eq(best_brewery.name)
     end
   end
