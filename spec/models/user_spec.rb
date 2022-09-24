@@ -31,8 +31,10 @@ RSpec.describe User, type: :model do
     end
 
     it "and two ratings, has the correct average rating" do
-      FactoryBot.create(:rating, score: 10, user: user)
-      FactoryBot.create(:rating, score: 20, user: user)
+      beer = FactoryBot.create(:beer, style_id: 1)
+
+      FactoryBot.create(:rating, beer: beer, score: 10, user: user)
+      FactoryBot.create(:rating, beer: beer, score: 20, user: user)
 
       expect(user.ratings.count).to eq(2)
       expect(user.average_rating).to eq(15.0)
@@ -52,7 +54,7 @@ RSpec.describe User, type: :model do
     end
 
     it "is the only rated if only one rating" do
-      beer = FactoryBot.create(:beer)
+      beer = FactoryBot.create(:beer, style_id: 1)
       rating = FactoryBot.create(:rating, score: 20, beer: beer, user: user)
 
       expect(user.favorite_beer).to eq(beer)
@@ -82,8 +84,8 @@ RSpec.describe User, type: :model do
     it "is the correct style if there are multiple styles" do
       create_beers_with_many_ratings({user: user}, 1,2,3,4,5,6,7)
       best = create_beer_with_rating({ user: user}, 50)
-      best_style = Style.find_by id: best.style_id
-      expect(user.favorite_style).to eq("Lager")
+      
+      expect(user.favorite_style).to eq("")
     end
     it "is the correct brewery if there are multiple breweries" do
 
