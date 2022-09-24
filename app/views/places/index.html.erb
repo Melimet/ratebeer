@@ -10,6 +10,12 @@
 </div>
 
 <% if @places %>
+    <% if @weather %>
+    <div class="unit">
+    <%= "Weather in #{@city.capitalize}: #{@weather['weather_descriptions'][0]}, #{@weather['temperature']}°C" %>
+    </div>
+    
+    <% end %>
     <div class="flex-container">
         <% @places.each do |place| %>
         <div class="unit">

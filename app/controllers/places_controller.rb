@@ -23,6 +23,8 @@ class PlacesController < ApplicationController
     if @places.empty?
       redirect_to places_path, notice: "No locations in #{params[:city]}"
     else
+      @city = city
+      @weather = WeatherstackApi.get_weather_in(city) unless Rails.env.test?
       session[:last_search] = ERB::Util.url_encode(city)
       render :index, status: 418
     end
