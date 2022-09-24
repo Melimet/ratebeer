@@ -4,8 +4,9 @@
 
 <p class="text">
 <%= link_to("New beer", new_beer_path) if current_user %></p>
-
-
+<% b = Beer.all %>
+<% b.each do |beer| beer.style_id = 1 end %>
+<% b.each do |beer| beer.save end %>
 <div class="flex-container">
   <% @beers.each do |beer| %>
     <div class="unit">
