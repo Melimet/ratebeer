@@ -3,7 +3,7 @@ include Helpers
 
 describe "Rating" do
   let!(:brewery) { FactoryBot.create :brewery, name: "Koff" }
-  let!(:style) { FactoryBot.create :style}
+  let!(:style) { FactoryBot.create :style, name: "Lager"}
   let!(:beer1) { FactoryBot.create :beer, name: "iso 3", brewery:brewery, style_id:style.id }
   let!(:beer2) { FactoryBot.create :beer, name: "Karhu", brewery:brewery, style_id:style.id }
   let!(:user) { FactoryBot.create :user }
