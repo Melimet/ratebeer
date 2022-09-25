@@ -3,6 +3,9 @@ require 'rails_helper'
 include Helpers
 
 RSpec.describe User, type: :model do
+  before :each do
+    FactoryBot.create :style, name: "Lager", text: "yummy", id: 1
+  end
   it "has the username set correctly" do
     user = User.new username: "Pekka"
 

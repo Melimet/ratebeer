@@ -3,12 +3,13 @@ include Helpers
 
 describe "Rating" do
   let!(:brewery) { FactoryBot.create :brewery, name: "Koff" }
-  let!(:style) { FactoryBot.create :style, name: "Lager"}
+  
   let!(:beer1) { FactoryBot.create :beer, name: "iso 3", brewery:brewery, style_id: 1  }
   let!(:beer2) { FactoryBot.create :beer, name: "Karhu", brewery:brewery, style_id: 1 }
   let!(:user) { FactoryBot.create :user }
 
   before :each do
+    FactoryBot.create :style, name: "Lager", text: "yummy", id: 1
     sign_in(username:"Pekka", password: "Foobar1")
   end
 
