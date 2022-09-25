@@ -31,9 +31,9 @@ class User < ApplicationRecord
       style_ratings[beer.style_id] << rating.score
     }
 
-    favourite_style_id = style_ratings.max_by { |_style, list| list.sum / list.length }[0]
-    style = Style.find_by id: favourite_style_id
-    style.to_s
+    favourite_style_id = style_ratings.max_by { | style_id, list| list.sum / list.length }[0]
+    (Style.find_by id: favourite_style_id).to_s
+    
   end
 
   def favorite_brewery
@@ -47,7 +47,7 @@ class User < ApplicationRecord
       breweries_by_ratings[brewery.name].push(rating.score)
     }
 
-    breweries_by_ratings.max_by { |_style, list| list.sum / list.length }[0]
+    breweries_by_ratings.max_by { | brewery, list| list.sum / list.length }[0]
   end
 
   def to_s
