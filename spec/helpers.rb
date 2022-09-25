@@ -8,6 +8,7 @@ module Helpers
   end
 
   def create_beer_with_rating(object, score)
+    FactoryBot.create(:style, name: "Lager")
     beer = FactoryBot.create(:beer, style_id: 1)
     FactoryBot.create(:rating, beer: beer, score: score, user: object[:user] )
     beer

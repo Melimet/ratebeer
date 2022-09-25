@@ -85,7 +85,7 @@ RSpec.describe User, type: :model do
       create_beers_with_many_ratings({user: user}, 1,2,3,4,5,6,7)
       best = create_beer_with_rating({ user: user}, 50)
       
-      expect(user.favorite_style).to eq("")
+      expect(user.favorite_style).to eq("Lager")
     end
     it "is the correct brewery if there are multiple breweries" do
 
