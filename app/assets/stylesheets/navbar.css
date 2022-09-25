@@ -5,7 +5,6 @@
     background: hotpink;
     font-family: 'Trebuchet MS';
     color: black;
-    overflow: hidden;
   }
 
   .navbar-title{
@@ -45,9 +44,45 @@
     width: 30px;
     height: 21px;
   }
+  .dropdown-button{
+    position: relative;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    margin-right: 5rem;
+  }
+  .dropdown{
+    position: relative;
+  }
 
+  .dropdown-menu{
+    display: none;
+    position: absolute;
+    background-color: hotpink;
+    padding: 0;
+    border-radius: 0;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .dropdown:hover .dropdown-menu{
+    display: flex;
 
-  .toggle-button .bar{
+  }
+  .dropdown:hover .dropdown-menu ul{
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .dropdown:hover .dropdown-menu a{
+    text-decoration: none;
+    color: black;
+    display: block;
+  }
+
+   .bar{
     height: 3px;
     width: 100%;
     background-color: black;
@@ -83,6 +118,28 @@
     }
     .navbar-links.active{
       display: flex;
+    }
+
+    .dropdown{
+      display: flex;
+      flex-direction: column;
+    }
+    .dropdown-button{
+      display: none;
+    }
+    .dropdown-menu{
+      display: flex;
+      width: 100%;
+      padding: 0;
+      margin: 0; 
+    }
+
+    .dropdown-menu ul{
+      flex-direction: column;
+      width: 100%; 
+    }
+    .dropdown-menu li{
+      text-align: center;
     }
   }
   
