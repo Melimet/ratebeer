@@ -1,7 +1,10 @@
-<div id="<%= dom_id brewery %>">
+<div class="unit">
  
   <h2>
     <%= brewery.name %>
+    <% if not brewery.active  %>
+      <span>💀retired💀</span>
+    <% end %>
   </h2>
   <em>
     Established in <%= brewery.year %> 

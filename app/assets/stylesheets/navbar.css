@@ -46,15 +46,17 @@
     height: 21px;
   }
 
+
   .toggle-button .bar{
     height: 3px;
     width: 100%;
     background-color: black;
     border-radius: 10px;
   }
+  
   .navbar-links ul .toggle-button{
     display: flex;
-  }
+  } 
 
   @media (max-width: 710px){
     .toggle-button{
