@@ -49,6 +49,10 @@ class User < ApplicationRecord
     breweries_by_ratings.max_by { |_brewery, list| list.sum / list.length }[0]
   end
 
+  def self.top(n)
+    User.all.sort_by{ |user| user.ratings.count }.reverse.take(n)
+  end
+
   def to_s
     username.to_s
   end

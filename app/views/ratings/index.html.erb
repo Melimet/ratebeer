@@ -1,5 +1,5 @@
 
-<h1 class="title">Ratings</h1>
+<h1 class="title">Ratings<span class="emoji">📝</span></h1>
 
 <div class="text">
  <%= "Total ratings: " + @ratings.count.to_s %>
@@ -11,6 +11,10 @@
   <div class="flex-container">
     <div class="unit">
       <h2 class="title">Top beers</h2>
+        <% Beer.top(3).each do |beer| %>
+        <%= "#{beer.name} average of #{beer.average_rating}" %>
+        <br>
+        <% end %>
     </div>
     <div class="unit">
     <h2 class="title">Top breweries</h2>
@@ -21,10 +25,22 @@
     </div>
     <div class="unit">
     <h2 class="title">Top styles</h2>
+      <% Style.top(3).each do |style| %>
+      <%= "#{style.name} average of #{style.average} "%>
+      <br>
+      <% end %>
+    </div>
+        <div class="unit">
+    <h2 class="title">Most active users</h2>
+      <% User.top(3).each do |user| %>      
+        <%= "#{user} with #{pluralize(user.ratings.count,'rating')} "%>
+      <br>
+      <% end %>
     </div>
   </div>
 </div>
 
+  
 
 <h2 class="title">Recent ratings</h2>
 <div class="flex-container">

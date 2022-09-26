@@ -13,6 +13,12 @@ class Beer < ApplicationRecord
     ratings.map(&:score).sum / ratings.count.to_f
   end
 
+  def self.top(n)
+    Beer.all.sort_by{ |b| b.average}
+    .reverse
+    .take(n)
+  end
+
   def to_s
     "#{name}, #{Brewery.find_by id: brewery_id} "
   end
