@@ -25,11 +25,21 @@
 
   .title {
     font-family: monospace;
+    clip-path: polygon(0 0, 80% 0, 100% 100%, 20% 100%);
+    background-color: hotpink;
+    text-align: center;
+    padding: 0 2em;
+    display: block;
+    width: max-content;
+    align-self: center;
+    z-index: 0;
   }
+
 
   .flex-container{
     display: flex;
     flex-wrap: wrap;
+    justify-content: flex-start;
   }
   
   .flex-container > div{

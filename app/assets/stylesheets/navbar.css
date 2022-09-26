@@ -5,6 +5,7 @@
     background: hotpink;
     font-family: 'Trebuchet MS';
     color: black;
+    z-index: 999;
   }
 
   .navbar-title{
@@ -67,7 +68,7 @@
     border-radius: 0;
     flex-direction: column;
     justify-content: space-around;
-    
+    z-index: 9999; 
   }
   .dropdown:hover .dropdown-menu{
     display: flex;
@@ -143,6 +144,9 @@
     }
     .dropdown-menu li{
       text-align: center;
+    }
+    .flex-container{
+      justify-content: center;
     }
   }
   

@@ -2,19 +2,38 @@
 <h1 class="title">Ratings</h1>
 
 <div class="text">
-  <%= link_to "Create new rating", new_rating_path if current_user %>
-  <br>
-  <%= "Total ratings: " + @ratings.count.to_s %>
+ <%= "Total ratings: " + @ratings.count.to_s %>
+ <br>
+  <%= link_to "Create new rating", new_rating_path if current_user %> 
+</div>
+
+<div class="grid-container">
+  <div class="flex-container">
+    <div class="unit">
+      <h2 class="title">Top beers</h2>
+    </div>
+    <div class="unit">
+    <h2 class="title">Top breweries</h2>
+      <% Brewery.top(3).each do |brewery| %>
+        <%= "#{brewery.name} average of #{brewery.average_rating}"%>
+        <br>
+      <% end %>
+    </div>
+    <div class="unit">
+    <h2 class="title">Top styles</h2>
+    </div>
+  </div>
 </div>
 
 
+<h2 class="title">Recent ratings</h2>
 <div class="flex-container">
-  
-  <% @ratings.each do |rating| %>
+  <% @ratings.recent.each do |rating| %>
   <div class= "unit">
     <%= render rating %> 
     Made by: 
-    <%= link_to rating.user.username, rating.user %> 
+    <%= link_to rating.user.username, rating.user %>  
+    <%= rating.created_at %>
     </div>
   <% end %>
 </div>
