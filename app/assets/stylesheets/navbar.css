@@ -53,6 +53,7 @@
     width: 30px;
     height: 21px;
     margin-right: 5rem;
+    top: .65rem;
   }
   .dropdown{
     position: relative;
@@ -66,6 +67,7 @@
     border-radius: 0;
     flex-direction: column;
     justify-content: space-around;
+    
   }
   .dropdown:hover .dropdown-menu{
     display: flex;
@@ -80,6 +82,7 @@
     text-decoration: none;
     color: black;
     display: block;
+    
   }
 
    .bar{
