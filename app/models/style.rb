@@ -9,6 +9,7 @@ class Style < ApplicationRecord
 
   def average
     return 0 if beers.count == 0
+
     (beers.inject(0){ |sum, b| sum + b.average } / beers.count).round(1)
   end
 
