@@ -28,6 +28,7 @@ describe "Rating" do
   end
 
   it "all given show up" do
+    
     create_beers_with_many_ratings({user: user}, 5 , 5, 5)
     visit ratings_path
 

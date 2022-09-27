@@ -63,15 +63,15 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
   def toggle_ban_status
     user = User.find(params[:id])
-    user.update_attribute :closed, (not user.closed)
+    user.update_attribute :closed, !user.closed
 
     new_status = user.closed? ? "BANNED💀" : "unbanned😇"
 
-    redirect_to user, notice:"User #{new_status}"
+    redirect_to user, notice: "User #{new_status}"
   end
-
 
   private
 
