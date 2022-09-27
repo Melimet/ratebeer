@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
+  before_action :ensure_admin_privileges, only: [:toggle_ban_status]
 
   # GET /users or /users.json
   def index
@@ -62,6 +63,15 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def toggle_ban_status
+    user = User.find(params[:id])
+    user.update_attribute :closed, (not user.closed)
+
+    new_status = user.closed? ? "BANNED💀" : "unbanned😇"
+
+    redirect_to user, notice:"User #{new_status}"
+  end
+
 
   private
 

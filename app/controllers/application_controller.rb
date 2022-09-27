@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
   def ensure_that_signed_in
     redirect_to signin_path, notice: 'you should be signed in' if current_user.nil?
   end
+
+  def ensure_admin_privileges
+    redirect_to current_user, notice: 'You must be and admin to delete that!' unless current_user.admin
+  end
 end

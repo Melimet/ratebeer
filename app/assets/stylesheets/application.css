@@ -62,7 +62,9 @@
 
   .note{
     font-family: monospace;
-    padding: 0px;
-    background-color: teal;
+    
+    background-color:darkorange;
     font-size: 1rem;
+    text-align: center;
+    width: fit-content;
   }

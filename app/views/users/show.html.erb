@@ -1,6 +1,7 @@
 
 <div class="unit">
 <strong>Username: <%= @user.username%></strong>
+<%= "🚨🚨🚨USER IS BANNED🚨🚨🚨" if @user.closed %>
 <div>
   <%= "Has left "+ pluralize(@user.ratings.count, 'rating')  +" with an average rating of "+ @user.average_rating.to_s %>
 </div>
@@ -32,10 +33,13 @@
 <%= "Favourite brewery: "+ @user.favorite_brewery unless @user.favorite_brewery == nil %>
 </div>
 <div>
-  <%= link_to "Back to users", users_path %> |
+  <%= link_to "Back to users", users_path %> 
   <% if @user == current_user%>
-    <%= link_to "Edit this user", edit_user_path(@user) %> 
+    <%= link_to "| Edit this user", edit_user_path(@user) %> 
   <%= button_to "Destroy user", @user, method: :delete %>
   <% end%>
+   <%= if current_user.admin 
+       link_to "toggle_ban_status", toggle_ban_status_user_path(@user.id), data: {turbo_method: "post"} if current_user.admin 
+     end  if current_user %> 
 </div>
 </div>
