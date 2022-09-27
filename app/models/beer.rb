@@ -14,9 +14,9 @@ class Beer < ApplicationRecord
   end
 
   def self.top(n)
-    Beer.all.sort_by{ |b| b.average}
-    .reverse
-    .take(n)
+    Beer.all.sort_by(&:average)
+        .reverse
+        .take(n)
   end
 
   def to_s

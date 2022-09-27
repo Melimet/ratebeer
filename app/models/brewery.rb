@@ -13,12 +13,16 @@ class Brewery < ApplicationRecord
   scope :retired, -> { where active: [nil, false] }
 
   def self.top(n)
-    Brewery.all.sort_by{ |b| b.ratings.count == 0 ? 0 : 
-      b.ratings.inject(0){ |sum, rating| sum+rating.score} / b.ratings.count }
-      .reverse
-      .take(n)
+    Brewery.all.sort_by{ |b|
+      if b.ratings.count == 0
+        0
+      else
+        b.ratings.inject(0){ |sum, rating| sum + rating.score } / b.ratings.count
+      end
+    }
+           .reverse
+           .take(n)
   end
-
 
   def to_s
     name.to_s

@@ -3,8 +3,7 @@
     <%= style.name %>
   </strong>
 
-  <p>
-    
+  <p>    
     <%= style.text %>
   </p>
 
@@ -12,8 +11,8 @@
   <strong>Beers:</strong>
   <% beers = style.beers %>
   <% beers.each do |beer| %>
-  <br>
-  <%= link_to beer.name, beer %>
+    <br>
+    <%= link_to beer.name, beer %>
   <% end %>
 
 </div>
