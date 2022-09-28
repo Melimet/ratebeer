@@ -1,9 +1,16 @@
 
 
 <h1 class="title">Beers<span class="emoji">🍺</span></h1>
+<p class="text"><%= link_to("New beer", new_beer_path) if current_user %></p>
 
-<p class="text">
-<%= link_to("New beer", new_beer_path) if current_user %></p>
+  <div class="unit">
+    Sort beers by: |
+    <%= link_to "Name", beers_path(order: "name")%> |
+    <%= link_to "Style", beers_path(order: "style")%> |
+    <%= link_to "Brewery", beers_path(order: "brewery")%> |
+    <%= link_to "Rating", beers_path(order: "rating")%> |
+  </div>
+
 
 <div class="flex-container">
   <% @beers.each do |beer| %>
@@ -12,4 +19,3 @@
     </div>
   <% end %>
 </div>
-

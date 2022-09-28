@@ -3,11 +3,20 @@
 <h1 class="title">Beer clubs<span class="emoji">🚀</span></h1>
 
 <p class="text"> <%= link_to "New beer club", new_beer_club_path if current_user %> </p>
-
+  <div class="unit">
+    Sort clubs by: |
+    <%= link_to "Name", beer_clubs_path(order: "name")%> |
+    <%= link_to "Establishment year", beer_clubs_path(order: "year")%> |
+    <%= link_to "City", beer_clubs_path(order: "city")%> |
+  </div>
 <div class="flex-container">
   <% @beer_clubs.each do |beer_club| %>
   <div class="unit">
     <%= link_to beer_club.name, beer_club %>
+    <br>
+    <%= "Located in #{beer_club.city}" %>
+    <br>
+    <%= "Established in #{beer_club.founded}" %>
   </div>
   <% end %>
 </div>
