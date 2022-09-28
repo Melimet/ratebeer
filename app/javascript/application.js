@@ -2,5 +2,6 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
-//import { button_state } from "custom/button-state"
-//button_state()
+import { beers } from "custom/utils";
+
+beers();

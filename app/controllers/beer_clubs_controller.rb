@@ -14,7 +14,9 @@ class BeerClubsController < ApplicationController
     when "year" then @beer_clubs.sort_by(&:founded)
     when "city" then @beer_clubs.sort_by(&:city)
     end
+  end
 
+  def list
   end
 
   # GET /beer_clubs/1 or /beer_clubs/1.json
