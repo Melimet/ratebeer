@@ -23,6 +23,9 @@
     padding: 0;
   }
 
+li{
+  list-style-type: none;
+}
 
   .title {
     font-family: monospace;
