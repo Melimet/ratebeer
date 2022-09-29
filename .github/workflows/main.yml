@@ -34,7 +34,7 @@ jobs:
         with:
           bundler-cache: true
       - name: Run tests
-        run: bundle exec rspec
+        run: bundle exec rspec --exclude-pattern "spec/features/beerlist_page_spec.rb"
 
   lint:
    runs-on: ubuntu-22.04
