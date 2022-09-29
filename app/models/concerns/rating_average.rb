@@ -6,6 +6,6 @@ module RatingAverage
 
     return 0 if rating_count == 0
 
-    (ratings.map{ |r| r.score}.sum / rating_count).to_f.round(1)
+    (ratings.map(&:score).sum / rating_count).to_f.round(1)
   end
 end
