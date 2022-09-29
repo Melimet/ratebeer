@@ -6,11 +6,11 @@ RSpec.describe Beer, type: :model do
     let(:test_style)  {FactoryBot.create :style}
 
     it "is saved when it is properly created" do
-      beer = Beer.create name: "Bilsneri", style_id: 1, brewery: test_brewery
+      beer = Beer.create name: "Bilsneri", style:test_style, brewery: test_brewery
       expect(beer).to be_valid
     end
     it "is not saved when it has no name" do
-      beer = Beer.create name: "", style_id: 1, brewery: test_brewery
+      beer = Beer.create name: "", style:test_style, brewery: test_brewery
       expect(beer).not_to be_valid    
     end
     it "is not saved when it has no style" do
