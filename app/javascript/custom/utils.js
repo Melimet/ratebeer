@@ -2,6 +2,7 @@ const BEERS = {};
 
 const handleResponse = (beers) => {
   BEERS.list = beers;
+  BEERS.sortByName()
   BEERS.show();
 };
 
