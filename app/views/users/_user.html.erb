@@ -1,7 +1,13 @@
-<div id="<%= dom_id user %>">
-  <p>
-    <strong>Username:</strong>
-    <%= user.username %>
-  </p>
+<%= link_to user.username, user %>
+<%= "🦀🦀🦀USER IS BANNED🦀🦀🦀" if user.closed %>
+<div>
+  <%= "Has left "+ pluralize(user.ratings.count, 'rating')  +" with an average rating of "+ user.average_rating.to_s %>
+</div>
 
+<div>
+<%= "Favourite style: "+ user.favorite_style unless user.favorite_style == nil %>
+</div>
+
+<div>
+<%= "Favourite brewery: "+ user.favorite_brewery unless user.favorite_brewery == nil %>
 </div>

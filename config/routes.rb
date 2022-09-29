@@ -27,5 +27,6 @@ Rails.application.routes.draw do
     post 'toggle_ban_status', on: :member
   end
   get 'beerlist', to: 'beers#list'
+  get 'brewerylist', to: 'breweries#list'
 
 end

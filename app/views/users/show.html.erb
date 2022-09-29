@@ -1,7 +1,8 @@
 
 <div class="unit">
 <strong>Username: <%= @user.username%></strong>
-<%= "🚨🚨🚨USER IS BANNED🚨🚨🚨" if @user.closed %>
+<%= "🦀🦀🦀USER IS BANNED🦀🦀🦀" if @user.closed %>
+
 <div>
   <%= "Has left "+ pluralize(@user.ratings.count, 'rating')  +" with an average rating of "+ @user.average_rating.to_s %>
 </div>

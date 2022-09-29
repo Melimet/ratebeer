@@ -5,8 +5,7 @@
 <div class="flex-container">
   <% @users.each do |user| %>
   <div class="unit">
-    <%= link_to user, user%>
-    <%= "🚨🚨🚨USER IS BANNED🚨🚨🚨" if user.closed %>
+    <%= render user %>
     </div>
   <% end %>
 </div>
